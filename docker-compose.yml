@@ -1,0 +1,18 @@
+services:
+  daemon:
+    image: qibo-daemon:0.1.0
+    build:
+      context: .
+      dockerfile: ./infra/Dockerfile
+      target: prod
+      args:
+        - UID=1058
+        - GID=1059
+    volumes:
+      - ./src:/app/src
+      - ./secrets:/app/secrets
+      - ./jobs:/jobs
+      - ./certs:/app/certs
+    container_name: qibo-daemon-container
+    env_file: ./.env.prod
+    restart: unless-stopped
