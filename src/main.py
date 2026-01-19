@@ -73,10 +73,16 @@ async def build_temporal_client() -> Client:
             client_cert = f.read()
         with open(TEMPORAL_MTLS_KEY_PATH, "rb") as f:
             client_key = f.read()
+        
+        erver_root_ca_cert = None
+        if TEMPORAL_MTLS_CA_PATH:
+            with open(TEMPORAL_MTLS_CA_PATH, "rb") as f:
+                server_root_ca_cert = f.read()
 
         tls_config = TLSConfig(
             client_cert=client_cert,
             client_private_key=client_key,
+            server_root_ca_cert=server_root_ca_cert,
             domain=TEMPORAL_MTLS_DOMAIN,
         )
 
