@@ -1,6 +1,6 @@
 services:
   daemon:
-    image: qibo-daemon:0.1.0
+    image: bqa-daemon:0.1.0
     build:
       context: .
       dockerfile: ./infra/Dockerfile
@@ -13,6 +13,6 @@ services:
       - ./secrets:/app/secrets
       - ./jobs:/jobs
       - ./certs:/app/certs
-    container_name: qibo-daemon-container
+    container_name: bqa-daemon-container
     env_file: ./.env.prod
     restart: unless-stopped
