@@ -6,8 +6,8 @@ services:
       dockerfile: ./infra/Dockerfile
       target: prod
       args:
-        - UID=1058
-        - GID=1059
+        - UID=1106
+        - GID=1108
     volumes:
       - ./src:/app/src
       - ./secrets:/app/secrets
